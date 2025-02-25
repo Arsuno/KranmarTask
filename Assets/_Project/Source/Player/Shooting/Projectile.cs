@@ -10,6 +10,9 @@ namespace _Project.Source.Player.Shooting
         private Vector3 _direction;
         private float _elapsedTime;
         private float _lifeTime;
+        
+        [SerializeField] private Rigidbody _rigidbody;
+        
         public event Action<Projectile> ReachedTarget; 
 
         public void Initialize(int damage, float speed, Vector3 direction, float lifetime)
@@ -19,14 +22,14 @@ namespace _Project.Source.Player.Shooting
             _direction = direction;
             _elapsedTime = 0f;
             _lifeTime = lifetime;
+            
+            _rigidbody.velocity = _direction * _speed;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            transform.position += _direction * (_speed * Time.deltaTime);
-
             if (_elapsedTime < _lifeTime)
-                _elapsedTime += Time.deltaTime;
+                _elapsedTime += Time.fixedDeltaTime;
             else
                 ReachedTarget?.Invoke(this);
         }
