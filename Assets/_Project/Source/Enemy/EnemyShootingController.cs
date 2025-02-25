@@ -56,7 +56,7 @@ namespace _Project.Source.Enemy
             if (player == null) return;
 
             Vector3 shootDirection = (player.transform.position - _enemyWeaponSpawner.CurrentWeaponObject.transform.position).normalized;
-
+            
             Projectile projectile = _projectilePool.GetObject();
             projectile.ReachedTarget += OnProjectileReachedTarget;
             projectile.transform.position = _enemyWeaponSpawner.CurrentWeaponObject.transform.position;
@@ -73,8 +73,8 @@ namespace _Project.Source.Enemy
         {
             while (true)
             {
-                Shoot(player);
                 yield return new WaitForSeconds(_fireRate);
+                Shoot(player);
             }
         }
     }

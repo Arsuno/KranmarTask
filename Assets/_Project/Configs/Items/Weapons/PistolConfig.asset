@@ -19,7 +19,7 @@ MonoBehaviour:
   AmmoCapacity: 10
   Damage: 10
   ReloadSpeed: 4
-  FireRate: 0.17
+  FireRate: 0.7
   Prefab: {fileID: 6971496768782505918, guid: dfc4d87131163204eb41e8626f81e196, type: 3}
   ProjectilePrefab: {fileID: 2453256568807046094, guid: 10a2c6218b3d9c74e90828540fb36221,
     type: 3}

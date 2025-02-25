@@ -45,6 +45,16 @@ namespace _Project.Source.Enemy
                 if (col.TryGetComponent(out PlayerCharacter player))
                 {
                     _player = player;
+                    
+                    Vector3 direction = _player.transform.position - gameObject.transform.position;
+                    direction.y = 0;
+                    
+                    if (direction != Vector3.zero)
+                    {
+                        Quaternion targetRotation = Quaternion.LookRotation(direction);
+                        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, targetRotation, Time.deltaTime);
+                    }
+                    
                     return true;
                 }
             }
